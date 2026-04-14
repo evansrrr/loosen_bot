@@ -109,7 +109,6 @@ async function sendTelegramMessage(chatId, text, env) {
   });
 }
 
-// 创建单次使用的群组邀请链接
 async function createInviteLink(env) {
   const res = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/createChatInviteLink`, {
     method: 'POST',
