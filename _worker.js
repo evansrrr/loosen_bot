@@ -21,6 +21,17 @@ async function handleMessage(message, env) {
   const chatId = message.chat.id;
   const chatType = message.chat.type;
   const text = message.text?.trim();
+
+  // Handle new chat members
+  if (message.new_chat_members && message.new_chat_members.length > 0) {
+    const welcomeText = 
+      "<b>欢迎加入！👋</b>\n\n" +
+      "请查看置顶消息获取订阅和其他信息";
+    
+    await sendTelegramMessage(chatId, welcomeText, env);
+    return;
+  }
+
   if (!text) return;
 
   if (text === '/start') {
